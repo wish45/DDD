@@ -1,6 +1,7 @@
 package com.example.ddd.order_1;
 
 import java.util.List;
+import java.util.Objects;
 
 public class Order {
     private List<OrderLine> orderLines;
@@ -17,7 +18,7 @@ public class Order {
     }
 
     private void verifyAtLeastOneOrMoreOrderLines(List<OrderLine> orderLines) {
-        if(orderLines == null || orderLines.isEmpty()){
+        if(Objects.requireNonNull(orderLines).isEmpty()){
             throw new IllegalArgumentException("no OrderLine");
         }
     }
