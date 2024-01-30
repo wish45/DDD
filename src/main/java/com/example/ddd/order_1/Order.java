@@ -5,10 +5,19 @@ import java.util.Objects;
 
 public class Order {
     private List<OrderLine> orderLines;
+    private ShippingInfo shippingInfo;
     private Money totalAmounts;
+    private OrderState state;
 
     public Order(List<OrderLine> orderLines) {
         setOrderLines(orderLines);
+        setShippingInfo(shippingInfo);
+    }
+
+    private void setShippingInfo(ShippingInfo shippingInfo) {
+        if(shippingInfo == null)
+            throw new IllegalArgumentException("no shippingInfo");
+        this.shippingInfo = shippingInfo;
     }
 
     private void setOrderLines(List<OrderLine> orderLines) {
@@ -30,8 +39,23 @@ public class Order {
         this.totalAmounts = new Money(sum);
     }
 
+
+    public void changeShippingInfo(ShippingInfo newShipping){
+        verifyNotYetShipped();
+        setShippingInfo(newShippingInfo);
+    }
+    public void cancel(){
+        verifyNotYestShipped();
+        this.state = OrderState.CANCELED;
+    }
+    private void verifyNotYetShipped() {
+        if(state != OrderState.PAYMENT_WAITING && state !=OrderState.PREPARING){
+            throw new IllegalStateException("already shipped");
+        }
+    }
+
     public void changeShipped(){}
-    public void changeShippingInfo(ShippingInfo newShipping){}
-    public void cancel(){}
     public void completePayment(){}
+
+
 }
