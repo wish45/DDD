@@ -4,6 +4,8 @@ import java.util.List;
 import java.util.Objects;
 
 public class Order {
+
+    private String orderNumber;
     private List<OrderLine> orderLines;
     private ShippingInfo shippingInfo;
     private Money totalAmounts;
@@ -57,5 +59,17 @@ public class Order {
     public void changeShipped(){}
     public void completePayment(){}
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Order order = (Order) o;
+        return orderNumber.equals(order.orderNumber);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(orderNumber);
+    }
 
 }
