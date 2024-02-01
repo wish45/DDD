@@ -1,6 +1,10 @@
 package com.example.ddd.order_1;
 
 public class ShippingInfo {
+
+    private Receiver receiver;
+    private Address address;
+
     private String receiverName;
     private String receiverPhoneNumber;
     private String shippingAddress1;
