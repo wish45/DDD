@@ -16,4 +16,9 @@ public class Receiver {
     public String getPhoneNumber() {
         return phoneNumber;
     }
+
+    @Override
+    public boolean equals(Object obj) {
+        return super.equals(obj);
+    }
 }

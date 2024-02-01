@@ -8,9 +8,13 @@ public class OrderLine {
 
 
     public OrderLine(Product product, Money price, int quantity) {
+//        this.product = product;
+//        this.price = price;
+//        this.quantity = quantity;
+//        this.amounts = calculateAmounts();
+//
         this.product = product;
-        this.price = price;
-        this.quantity = quantity;
+        this.price = new Money(price.getValue());
         this.amounts = calculateAmounts();
     }
 
@@ -19,4 +23,6 @@ public class OrderLine {
         return price.multiply(quantity);
     }
     public int getAmounts(){}
+
+
 }

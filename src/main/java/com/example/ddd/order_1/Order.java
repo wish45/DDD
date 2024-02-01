@@ -59,17 +59,15 @@ public class Order {
     public void changeShipped(){}
     public void completePayment(){}
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Order order = (Order) o;
-        return orderNumber.equals(order.orderNumber);
-    }
 
-    @Override
-    public int hashCode() {
-        return Objects.hash(orderNumber);
+    public Order(Orderer orderder, List<OrderLine> orderLines, ShippingInfo shippingInfo, OrderState state) {
+        this.orderer = orderer;
+        this.orderLines = orderLines;
+        this.shippingInfo = shippingInfo;
+        this.state = state;
     }
-
+    private void setOrderer(Orderer orderer){
+        if(orderer == null) throw new IllegalArgumentException("no orderer");
+        this.orderer = orderer;
+    }
 }
