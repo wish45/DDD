@@ -18,6 +18,7 @@ public class Order2 {
         this.ShippingInfo = newShippingInfo;
     }
 
+
     private void verifyNotYetShipped() {
         if(state != OrderState.PAYMENT_WAITING && state != OrderState.PREPARING)
             throw new IllegalStateException("already shipped");
