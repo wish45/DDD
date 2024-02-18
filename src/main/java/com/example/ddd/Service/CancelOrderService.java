@@ -9,6 +9,10 @@ public class CancelOrderService {
 
     private OrderRepository orderRepository;
 
+    public CancelOrderService(OrderRepository orderRepository){
+        this.orderRepository = orderRepository;
+    }
+
     @Transactional
     public void cancelOrder(String orderId){
         Order order = findOrderById(orderId);
